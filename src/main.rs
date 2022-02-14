@@ -1,8 +1,19 @@
-mod parser;
-mod structures;
 #[cfg(test)]
 mod tests;
+mod generator;
+mod parser;
+mod structures;
+mod opts;
+
+use structopt::StructOpt;
+use std::fs::read_to_string;
 
 fn main() {
-    println!("{:?}", parser::parse_variable("(0,1000)"));
+    let opt = opts::Opt::from_args();
+
+    let casefile = read_to_string(opt.filepath).unwrap();
+
+    let case = parser::parse_text(&casefile);
+
+    
 }

@@ -6,9 +6,10 @@ use nom::{
     IResult,
 };
 
+
 pub fn parse_variable(input: &str) -> IResult<&str, Variable> {
     let (input, (name, _, (lower, upper), _)) = tuple((
-        opt(alphanumeric1),
+        opt(alphanumeric1), // TODO: Make it impossible to have variable starting with a number
         char('('),
         separated_pair(
             delimited(

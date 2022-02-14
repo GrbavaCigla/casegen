@@ -1,6 +1,6 @@
 #[derive(Debug)]
 pub enum Entity<'a> {
-    Text(String),
+    Text(&'a str),
     Variable(Variable<'a>),
 }
 

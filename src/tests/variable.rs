@@ -60,3 +60,21 @@ fn test_variable_with_spaces() {
         ))
     );
 }
+
+
+#[test]
+fn test_variable_with_garbage() {
+    assert_eq!(
+        parse_variable("n(0, 100)bla foo bar spam eggs"),
+        Ok((
+            "bla foo bar spam eggs",
+            Variable {
+                name: Some("n"),
+                lower: 0,
+                upper: 100,
+            }
+        ))
+    );
+}
+
+// TODO: Write tests for parse_text
